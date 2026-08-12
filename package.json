@@ -1,0 +1,21 @@
+{
+  "name": "devtinder_be",
+  "version": "1.0.0",
+  "description": "code repo for dev tinder BE with node,express and mongo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [
+    "node js",
+    "express js",
+    "mongo db"
+  ],
+  "author": "saiteja_kandula",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

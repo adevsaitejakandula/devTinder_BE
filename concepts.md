@@ -9,3 +9,12 @@
 - what are dependencies
 - what is the use of -g while npm install
 - Difference b/w caret & tilda
+
+- initalize git
+- push changes
+
+- order of the routes matter a lot
+
+- install postman , create a work sapce,collection test get call
+
+- explore get,post,delete

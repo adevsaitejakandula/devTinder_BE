@@ -1,28 +1,34 @@
-const express = require('express')
+const express = require("express");
+const cookieParser = require('cookie-parser')
+const cors = require('cors')
+const { connectDB } = require("./config/database.js");
+const app = express();
 
-const app = express()
 
-// app.use('/get', (req,res) => {
-//     res.send("Hello world!")
-// })
+app.use(express.json())
+app.use(cookieParser())
+app.use(cors({
+    "origin": "http://localhost:5173",
+    "credentials": true
+}))
 
-app.get("/user" , (req,res) => {
-    res.send({
-        "firstname": "sai",
-        "lastname": "teja"
-    })
-})
+const authRouter = require('./routes/auth.js')
+const profileRouter = require('./routes/profile.js')
+const requestRouter = require('./routes/request.js')
+const userRouter = require('./routes/user.js')
 
-app.post("/user", (req,res) => {
-    console.log("Saved Data to data base")
-    res.send("Data Successfully saved to Data base")
-})
+app.use("/", authRouter)
+app.use("/", profileRouter)
+app.use("/",requestRouter)
+app.use("/",userRouter)
 
-app.delete("/user", (req,res) => {
-    console.log("deleted user successfully")
-    res.send("user Deleted successfully")
-})
-
-app.listen(2326, () => {
-    console.log("Server is listening successfully on 2326")
-})
+connectDB()
+  .then(() => {
+    console.log("Database connection established successfully")
+    app.listen(2326, () => {
+        console.log("Server is listening on port 2326")
+    });
+  })
+  .catch((err) => {
+    console.log("Failed to connect db " + err.message)
+  });

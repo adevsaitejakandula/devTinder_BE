@@ -18,3 +18,17 @@
 - install postman , create a work sapce,collection test get call
 
 - explore get,post,delete
+
+-explore routing and use of +,*,(), ? in the routes
+
+-use of regex in routes
+
+-Reading query params in routes
+
+-reading dynamic routes
+
+-multiple route handlers
+-next()
+-multple next() with res.send
+-app.use("/route", [rh1,rh2],rh3)
+-what is Middlewares

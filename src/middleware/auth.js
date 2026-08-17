@@ -4,7 +4,7 @@ const userAuth = async (req, res, next) => {
   try {
     const cookies = req.cookies;
     const { token } = cookies;
-    const decodedObj = await jwt.verify(token, "DEVSAITEJA");
+    const decodedObj = await jwt.verify(token, process.env.JWT_SECRET_KEY);
     const { _id } = decodedObj;
     const user = await User.findById(_id);
     if (user) {

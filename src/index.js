@@ -8,10 +8,10 @@ const app = express();
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
-    "origin": "http://localhost:5173",
+  "origin": "http://localhost:5174",
     "credentials": true
 }))
-
+require('dotenv').config()
 const authRouter = require('./routes/auth.js')
 const profileRouter = require('./routes/profile.js')
 const requestRouter = require('./routes/request.js')
@@ -25,8 +25,8 @@ app.use("/",userRouter)
 connectDB()
   .then(() => {
     console.log("Database connection established successfully")
-    app.listen(2326, () => {
-        console.log("Server is listening on port 2326")
+    app.listen(process.env.PORT, () => {
+        console.log(`Server is listening on port ${process.env.PORT}`)
     });
   })
   .catch((err) => {
